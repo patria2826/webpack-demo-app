@@ -11,8 +11,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"] //load in reverse order, so we put style in front of css
+                test: /\.scss$/,
+                use: [
+                    "style-loader", //3. Inject styles into DOM
+                    "css-loader",   //2. Turn css into comnon js
+                    "sass-loader"   //1. Turns sass into css
+                ] 
             }
         ]
     }
