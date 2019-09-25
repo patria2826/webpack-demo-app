@@ -2,21 +2,12 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: "./src/index.js", //grab everything related to this file
-    plugins: [
-        //generate the index.html file based on template
-        new HtmlWebpackPlugin({ template: "./src/template.html" }),
-    ],
+    entry: {  //grab everything in the files
+        main: "./src/index.js",
+        vendor: "./src/vendor.js"
+    },
     module: {
         rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    "style-loader", //3. Inject styles into DOM
-                    "css-loader",   //2. Turn css into comnon js
-                    "sass-loader"   //1. Turns sass into css
-                ]
-            },
             {
                 test: /\.html$/,
                 use: ["html-loader"] //https://webpack.js.org/loaders/html-loader/
